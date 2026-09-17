@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: code-judge-postgres
+    environment:
+      POSTGRES_USER: judge
+      POSTGRES_PASSWORD: judgepassword
+      POSTGRES_DB: codejudge
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: code-judge-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
